@@ -6,7 +6,7 @@
   } = require("../lib")
  const { 
   HANDLERS
-} = require("../config");
+} = require("../config")
 
   command(
      {     pattern: "menu",
@@ -79,5 +79,7 @@ const buttons = [
 return await message.client.sendMessage(message.jid, buttonMessage, 
 { 
  quoted: message 
- })
+ });
+}
+}
 });
