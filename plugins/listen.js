@@ -1,8 +1,12 @@
   const {
      command,
      isPublic,
-     tiny
+     tiny,
+     clockString
   } = require("../lib")
+ const { 
+  HANDLERS
+} = require("../config");
 
   command(
      {     pattern: "menu",
@@ -46,7 +50,14 @@ return await message.client.sendMessage(message.jid, listMessage, {
  command({ pattern: "downloads", fromMe: isPublic, },
 async(message,match) => {
 
-let menu=`
+     try {
+            let [date, time] = new Date()
+            .toLocaleString("en-IN", {
+                timeZone: "Africa/Johannesburg"
+            })
+            .split(",");
+            let menu = `
+
 ╭──❍「 *DOWNLOAD* 」
 │ *»* song
 │ *»* tik
@@ -60,7 +71,7 @@ let menu=`
 │ *»* play
 │ *»* video
 │ *»* getexif
-╰─────❍`
+╰─────❍`;
 const buttons = [
   {buttonld: `alive`, buttonText: {displayText: "🎗ALIVE🎗"}, type:1},
   {buttonld: `menu`, buttonText: {displayText: "🎗MENU🎗"}, type:1},
